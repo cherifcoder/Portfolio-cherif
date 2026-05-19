@@ -1,0 +1,128 @@
+:root {
+    --bs-primary: #00df9a;
+    /* Vert YGG */
+    --bs-primary-rgb: 0, 223, 154;
+    --cyber-glow: rgba(0, 223, 154, 0.35);
+}
+
+.text-accent {
+    color: var(--bs-primary) !important;
+}
+
+.btn-accent {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: #121212;
+    font-weight: bold;
+}
+
+.btn-accent:hover {
+    background-color: #00b37a;
+    border-color: #00b37a;
+    color: #121212;
+}
+
+.badge-accent {
+    background-color: rgba(var(--bs-primary-rgb), 0.15);
+    color: var(--bs-primary);
+    border: 1px solid var(--bs-primary);
+}
+
+.hero-img {
+    border-radius: 30% 70% 70% 30% / 67% 62% 38% 33%;
+    border: 8px solid var(--bs-primary);
+    object-fit: cover;
+}
+
+.skill-icon-container {
+    width: 90px;
+    height: 90px;
+    border: 3px solid var(--bs-primary);
+    transition: transform 0.2s;
+}
+
+.skill-icon-container:hover {
+    transform: scale(1.05);
+}
+
+/* --- MON NOUVEAU COMPTEUR STYLE YGG CUSTOM AVEC HALO --- */
+.ygg-container-custom {
+    background: linear-gradient(145deg, #0a0a0a, #111);
+    border: 1px solid #222;
+    border-top: 4px solid var(--bs-primary);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* Blocs des chiffres */
+.time-block {
+    background: #050505;
+    border: 1px solid #1a1a1a;
+    border-radius: 12px;
+    padding: 15px 20px;
+    min-width: 90px;
+    text-align: center;
+    /* Halo extérieur autour de la boîte */
+    box-shadow: 0 0 15px var(--cyber-glow);
+    transition: all 0.3s ease;
+}
+
+.time-block:hover {
+    box-shadow: 0 0 25px rgba(0, 223, 154, 0.6);
+    border-color: var(--bs-primary);
+}
+
+/* Gros caractères avec halo textuel */
+.time-digit {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--bs-primary);
+    line-height: 1;
+    /* Halo lumineux interne sur le texte */
+    text-shadow: 0 0 12px rgba(0, 223, 154, 0.8), 0 0 2px rgba(0, 223, 154, 1);
+}
+
+.time-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #6c757d;
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+/* Séparateur clignotant (les deux points : ) */
+.time-separator {
+    font-size: 2.5rem;
+    color: var(--bs-primary);
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 223, 154, 0.5);
+    animation: blink 1s infinite;
+    padding-bottom: 25px;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0.2;
+    }
+}
+
+@media (max-width: 576px) {
+    .time-digit {
+        font-size: 1.8rem;
+    }
+
+    .time-block {
+        padding: 10px;
+        min-width: 70px;
+    }
+
+    .time-separator {
+        font-size: 1.5rem;
+        padding-bottom: 15px;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
