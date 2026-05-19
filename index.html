@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cherif Souleymane Haidara | Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bs-primary: #00df9a; /* Vert YGG */
+            --bs-primary-rgb: 0, 223, 154;
+            --cyber-glow: rgba(0, 223, 154, 0.35);
+        }
+        .text-accent { color: var(--bs-primary) !important; }
+        .btn-accent {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+            color: #121212;
+            font-weight: bold;
+        }
+        .btn-accent:hover {
+            background-color: #00b37a;
+            border-color: #00b37a;
+            color: #121212;
+        }
+        .badge-accent {
+            background-color: rgba(var(--bs-primary-rgb), 0.15);
+            color: var(--bs-primary);
+            border: 1px solid var(--bs-primary);
+        }
+        .hero-img {
+            border-radius: 30% 70% 70% 30% / 67% 62% 38% 33%;
+            border: 8px solid var(--bs-primary);
+            object-fit: cover;
+        }
+        .skill-icon-container {
+            width: 90px;
+            height: 90px;
+            border: 3px solid var(--bs-primary);
+            transition: transform 0.2s;
+        }
+        .skill-icon-container:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- MON NOUVEAU COMPTEUR STYLE YGG CUSTOM AVEC HALO --- */
+        .ygg-container-custom {
+            background: linear-gradient(145deg, #0a0a0a, #111);
+            border: 1px solid #222;
+            border-top: 4px solid var(--bs-primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Blocs des chiffres */
+        .time-block {
+            background: #050505;
+            border: 1px solid #1a1a1a;
+            border-radius: 12px;
+            padding: 15px 20px;
+            min-width: 90px;
+            text-align: center;
+            /* Halo extérieur autour de la boîte */
+            box-shadow: 0 0 15px var(--cyber-glow);
+            transition: all 0.3s ease;
+        }
+        
+        .time-block:hover {
+            box-shadow: 0 0 25px rgba(0, 223, 154, 0.6);
+            border-color: var(--bs-primary);
+        }
+
+        /* Gros caractères avec halo textuel */
+        .time-digit {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--bs-primary);
+            line-height: 1;
+            /* Halo lumineux interne sur le texte */
+            text-shadow: 0 0 12px rgba(0, 223, 154, 0.8), 0 0 2px rgba(0, 223, 154, 1);
+        }
+
+        .time-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #6c757d;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        /* Séparateur clignotant (les deux points : ) */
+        .time-separator {
+            font-size: 2.5rem;
+            color: var(--bs-primary);
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 223, 154, 0.5);
+            animation: blink 1s infinite;
+            padding-bottom: 25px;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0.2; }
+        }
+
+        @media (max-width: 576px) {
+            .time-digit { font-size: 1.8rem; }
+            .time-block { padding: 10px; min-width: 70px; }
+            .time-separator { font-size: 1.5rem; padding-bottom: 15px; }
+        }
+
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-dark text-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 sticky-top border-bottom border-secondary-subtle">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center fs-3" href="#">
+                <i class="bi bi-box-seam me-2"></i>
+                <span class="fw-bold text-white">CHERIF</span>
+                <span class="text-accent fw-bold ms-1">DEV</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item"><a class="nav-link text-white" href="#Hero">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#About">A propos</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#Experiences">Parcours</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#Projets">Projets</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="ygg-container-custom p-4 rounded-4 text-center">
+            <div class="d-flex justify-content-center align-items-center gap-2 mb-4">
+                <i class="bi bi-terminal-dash text-accent fs-4"></i>
+                <span class="text-secondary text-uppercase small fw-bold tracking-wider">Temps d'activité Développeur Web (Depuis 2024)</span>
+            </div>
+            
+            <div class="d-flex flex-wrap justify-content-center align-items-center gap-2 gap-sm-3">
+                
+                <div class="time-block">
+                    <div id="count-years" class="time-digit">00</div>
+                    <div class="time-label">Ans</div>
+                </div>
+                
+                <div class="time-separator">:</div>
+
+                <div class="time-block">
+                    <div id="count-months" class="time-digit">00</div>
+                    <div class="time-label">Mois</div>
+                </div>
+                
+                <div class="time-separator">:</div>
+
+                <div class="time-block">
+                    <div id="count-days" class="time-digit">00</div>
+                    <div class="time-label">Jours</div>
+                </div>
+                
+                <div class="time-separator">::</div>
+
+                <div class="time-block">
+                    <div id="count-hours" class="time-digit">00</div>
+                    <div class="time-label">Hrs</div>
+                </div>
+
+                <div class="time-separator">:</div>
+
+                <div class="time-block">
+                    <div id="count-minutes" class="time-digit">00</div>
+                    <div class="time-label">Min</div>
+                </div>
+
+                <div class="time-separator">:</div>
+
+                <div class="time-block">
+                    <div id="count-seconds" class="time-digit">00</div>
+                    <div class="time-label">Sec</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <section id="Hero" class="container my-5 py-4">
+        <div class="row align-items-center flex-column-reverse flex-lg-row g-5">
+            <div class="col-lg-7 text-center text-lg-start">
+                <span class="badge badge-accent mb-2 px-3 py-2 text-uppercase fs-6">Portfolio Officiel</span>
+                <h1 class="display-4 fw-bold mb-1 mt-2">Bonjour, Je suis</h1>
+                <h2 class="display-2 fw-black text-accent mb-3">Cherif Souleymane Haidara</h2>
+                <h5 class="text-secondary mb-4 fs-4">Technicien en Technologies de l’Information & Développeur Web</h5>
+                <p class="lead text-secondary mb-4">
+                   Développeur web en Licence 3 et Technicien IT avec plus de 3 ans d'expérience en support technique, helpdesk, maintenance et cybersécurité. Dynamique et passionné par les défis technologiques, j'assure la continuité des services et la sécurité des infrastructures réseaux.
+                </p>
+                <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                    <a href="mailto:cherif.so.h@mail.com" class="btn btn-accent btn-lg px-4 shadow">
+                        <i class="bi bi-envelope-fill me-2"></i>Contactez-moi
+                    </a>
+                    <a href="#Experiences" class="btn btn-outline-light btn-lg px-4">
+                        Voir mon parcours
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5 d-flex justify-content-center">
+                <img src="assets/me.jpeg" alt="Cherif S H" class="img-fluid hero-img shadow-lg" style="width: 320px; height: 320px;">
+            </div>
+        </div>
+    </section>
+
+    <section id="About" class="bg-body-tertiary py-5 my-5 rounded-4">
+        <div class="container py-4">
+            <h1 class="text-uppercase fw-bold text-center mb-5">A propos</h1>
+            <div class="row align-items-center justify-content-center g-4">
+                <div class="col-lg-4 d-none d-lg-block text-center">
+                    <img src="assets/me.jpeg" alt="Cherif" class="img-fluid rounded-4 shadow-lg object-fit-cover" style="width: 300px; height: 390px;">
+                </div>
+                <div class="col-lg-8 d-flex flex-column gap-3">
+                    <div class="d-flex flex-column flex-md-row align-items-center bg-dark p-4 rounded-4 shadow-sm border border-secondary-subtle">
+                        <div class="fs-1 text-accent mb-3 mb-md-0 px-3"><i class="bi bi-wallpaper"></i></div>
+                        <div class="ms-md-3 text-center text-md-start">
+                            <h2 class="h5 fw-bold mb-1">Développeur Frontend & Infographe</h2>
+                            <p class="text-secondary mb-0">Conception d'interfaces responsives modernes (React, Tailwind, Bootstrap) et création de supports visuels d'entreprise.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row align-items-center bg-dark p-4 rounded-4 shadow-sm border border-secondary-subtle">
+                        <div class="fs-1 text-accent mb-3 mb-md-0 px-3"><i class="bi bi-hdd-stack"></i></div>
+                        <div class="ms-md-3 text-center text-md-start">
+                            <h2 class="h5 fw-bold mb-1">Développeur Backend & API</h2>
+                            <p class="text-secondary mb-0">Maîtrise de l'environnement Node.js et Express.js pour la création d'applications de gestion robustes et sur mesure.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row align-items-center bg-dark p-4 rounded-4 shadow-sm border border-secondary-subtle">
+                        <div class="fs-1 text-accent mb-3 mb-md-0 px-3"><i class="bi bi-shield-check"></i></div>
+                        <div class="ms-md-3 text-center text-md-start">
+                            <h2 class="h5 fw-bold mb-1">Réseaux, Cybersécurité & IoT</h2>
+                            <p class="text-secondary mb-0">Simulation d'architectures LAN (Cisco), application de politiques de sécurité d'entreprise et projets connectés Arduino.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Experiences" class="container my-5 py-5">
+        <h1 class="text-uppercase fw-bold text-center mb-5">Parcours & Compétences</h1>
+        <div class="row g-5 flex-column-reverse flex-lg-row">
+            <div class="col-lg-5">
+                <h4 class="fw-bold text-accent mb-3"><i class="bi bi-cpu me-2"></i>Technologies</h4>
+                <div class="d-flex flex-wrap justify-content-center gap-3 p-3 bg-body-tertiary rounded-4 py-4 mb-4">
+                    <div class="text-center" style="width: 85px;"><div class="skill-icon-container d-flex align-items-center justify-content-center bg-dark rounded-circle mx-auto p-2"><img src="assets/html.png" alt="HTML" class="img-fluid rounded-circle p-1"></div><span class="d-block mt-2 small text-secondary">HTML</span></div>
+                    <div class="text-center" style="width: 85px;"><div class="skill-icon-container d-flex align-items-center justify-content-center bg-dark rounded-circle mx-auto p-2"><img src="assets/css.png" alt="CSS" class="img-fluid rounded-circle p-1"></div><span class="d-block mt-2 small text-secondary">CSS</span></div>
+                    <div class="text-center" style="width: 85px;"><div class="skill-icon-container d-flex align-items-center justify-content-center bg-dark rounded-circle mx-auto p-2"><img src="assets/js.png" alt="JS" class="img-fluid rounded-circle p-1"></div><span class="d-block mt-2 small text-secondary">JavaScript</span></div>
+                    <div class="text-center" style="width: 85px;"><div class="skill-icon-container d-flex align-items-center justify-content-center bg-dark rounded-circle mx-auto p-2"><img src="assets/bootstrap.png" alt="Bootstrap" class="img-fluid rounded-circle p-1"></div><span class="d-block mt-2 small text-secondary">Bootstrap</span></div>
+                    <div class="text-center" style="width: 85px;"><div class="skill-icon-container d-flex align-items-center justify-content-center bg-dark rounded-circle mx-auto p-2"><img src="assets/tailwind.png" alt="Tailwind" class="img-fluid rounded-circle p-1"></div><span class="d-block mt-2 small text-secondary">Tailwind</span></div>
+                    <div class="text-center" style="width: 85px;"><div class="skill-icon-container d-flex align-items-center justify-content-center bg-dark rounded-circle mx-auto p-2"><img src="assets/react.png" alt="React" class="img-fluid rounded-circle p-1"></div><span class="d-block mt-2 small text-secondary">React</span></div>
+                    <div class="text-center" style="width: 85px;"><div class="skill-icon-container d-flex align-items-center justify-content-center bg-dark rounded-circle mx-auto p-2"><img src="assets/nodeJs.png" alt="Node" class="img-fluid rounded-circle p-1"></div><span class="d-block mt-2 small text-secondary">Node.js</span></div>
+                    <div class="text-center" style="width: 85px;"><div class="skill-icon-container d-flex align-items-center justify-content-center bg-dark rounded-circle mx-auto p-2"><img src="assets/expressJs.png" alt="Express" class="img-fluid rounded-circle p-1"></div><span class="d-block mt-2 small text-secondary">Express</span></div>
+                    <div class="text-center" style="width: 85px;"><div class="skill-icon-container d-flex align-items-center justify-content-center bg-dark rounded-circle mx-auto p-2"><img src="assets/python.png" alt="Python" class="img-fluid rounded-circle p-1"></div><span class="d-block mt-2 small text-secondary">Python</span></div>
+                    <div class="text-center" style="width: 85px;"><div class="skill-icon-container d-flex align-items-center justify-content-center bg-dark rounded-circle mx-auto p-2"><img src="assets/arduino.png" alt="Arduino" class="img-fluid rounded-circle p-1"></div><span class="d-block mt-2 small text-secondary">Arduino</span></div>
+                    <div class="text-center" style="width: 85px;"><div class="skill-icon-container d-flex align-items-center justify-content-center bg-dark rounded-circle mx-auto p-2"><img src="assets/linux.png" alt="Linux" class="img-fluid rounded-circle p-1"></div><span class="d-block mt-2 small text-secondary">Linux</span></div>
+                    <div class="text-center" style="width: 85px;"><div class="skill-icon-container d-flex align-items-center justify-content-center bg-dark rounded-circle mx-auto p-2"><img src="assets/GitHub.png" alt="Git" class="img-fluid rounded-circle p-1"></div><span class="d-block mt-2 small text-secondary">Git/GitHub</span></div>
+                </div>
+
+                <h4 class="fw-bold text-accent mb-3"><i class="bi bi-mortarboard me-2"></i>Formations</h4>
+                <div class="bg-body-tertiary p-3 rounded-4 mb-4">
+                    <div class="mb-3 border-bottom border-secondary pb-2">
+                        <span class="badge badge-accent float-end">En cours</span>
+                        <h6 class="fw-bold mb-0">Licence Professionnelle Programmation & Réseaux</h6>
+                        <small class="text-secondary">IUFP Ségou</small>
+                    </div>
+                    <div class="mb-3 border-bottom border-secondary pb-2">
+                        <span class="badge bg-secondary float-end">2023</span>
+                        <h6 class="fw-bold mb-0">DUT Informatique et Réseaux</h6>
+                        <small class="text-secondary">IUFP Ségou</small>
+                    </div>
+                    <div>
+                        <span class="badge bg-secondary float-end">2019</span>
+                        <h6 class="fw-bold mb-0">BAC Série TSE (Sciences Expérimentales)</h6>
+                        <small class="text-secondary">Lycée Madina, Bamako</small>
+                    </div>
+                </div>
+
+                <h4 class="fw-bold text-accent mb-3"><i class="bi bi-patch-check me-2"></i>Certifications</h4>
+                <div class="bg-body-tertiary p-3 rounded-4">
+                    <ul class="list-unstyled mb-0 small text-secondary">
+                        <li class="mb-2"><i class="bi bi-award text-accent me-2"></i>Développement Web & Responsive Design – CURSA (2025)</li>
+                        <li class="mb-2"><i class="bi bi-award text-accent me-2"></i>Création de sites WordPress – Orange Digital Center (2022)</li>
+                        <li class="mb-2"><i class="bi bi-award text-accent me-2"></i>Plan d'affaires et entrepreneuriat – MSAS (2022)</li>
+                        <li><i class="bi bi-award text-accent me-2"></i>Développement personnel et leadership – ACJM (2021)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-7 d-flex flex-column gap-4">
+                <h4 class="fw-bold text-accent"><i class="bi bi-briefcase me-2"></i>Expériences Professionnelles</h4>
+                
+                <div class="bg-body-tertiary rounded-4 p-4 shadow-sm border border-secondary-subtle">
+                    <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center mb-3">
+                        <img src="assets/lpt.png" alt="La paix transport" class="object-fit-contain me-sm-3 mb-2 mb-sm-0" style="width: 100px; height: 50px;">
+                        <div>
+                            <h5 class="fw-bold text-accent mb-0">Agent polyvalent IT et logistique</h5>
+                            <div class="text-light small fw-semibold">La Paix Transport, Nouakchott</div>
+                            <small class="text-secondary"><i class="bi bi-calendar3 me-2"></i>Février 2025 - Présent</small>
+                        </div>
+                    </div>
+                    <ul class="list-unstyled ms-sm-2 border-start border-secondary-subtle ps-3 small text-secondary">
+                        <li class="mb-2"><i class="bi bi-arrow-right-short text-accent"></i>Support de premier niveau (Helpdesk) et maintenance préventive/curative.</li>
+                        <li class="mb-2"><i class="bi bi-arrow-right-short text-accent"></i>Prise en charge, enregistrement et suivi des incidents (Ticketing).</li>
+                        <li class="mb-2"><i class="bi bi-arrow-right-short text-accent"></i>Supervision quotidienne du système de vidéosurveillance (CCTV).</li>
+                        <li class="mb-2"><i class="bi bi-arrow-right-short text-accent"></i>Accompagnement et formation du personnel aux applications standards.</li>
+                        <li><i class="bi bi-arrow-right-short text-accent"></i>Gestion administrative, coordination logistique et visuels de communication.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-body-tertiary rounded-4 p-4 shadow-sm border border-secondary-subtle">
+                    <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center mb-3">
+                        <div class="bg-dark rounded text-center fw-bold me-sm-3 mb-2 mb-sm-0" style="width: 100px; height: 50px; line-height: 50px; color: var(--bs-primary)">WEB</div>
+                        <div>
+                            <h5 class="fw-bold text-accent mb-0">Freelance – Informatique et Infographie</h5>
+                            <div class="text-light small fw-semibold">En ligne</div>
+                            <small class="text-secondary"><i class="bi bi-calendar3 me-2"></i>Janvier 2022 - Présent</small>
+                        </div>
+                    </div>
+                    <ul class="list-unstyled ms-sm-2 border-start border-secondary-subtle ps-3 small text-secondary">
+                        <li class="mb-2"><i class="bi bi-arrow-right-short text-accent"></i>Développement d'applications de gestion sur mesure et sites web fonctionnels.</li>
+                        <li><i class="bi bi-arrow-right-short text-accent"></i>Création de visuels numériques et supports de communication.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-body-tertiary rounded-4 p-4 shadow-sm border border-secondary-subtle">
+                    <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center mb-3">
+                        <img src="assets/kodax.png" alt="Kodax" class="object-fit-contain me-sm-3 mb-2 mb-sm-0" style="width: 100px; height: 50px;">
+                        <div>
+                            <h5 class="fw-bold text-accent mb-0">Stagiaire – Gestion de cybercafé</h5>
+                            <div class="text-light small fw-semibold">Kodax, Ségou</div>
+                            <small class="text-secondary"><i class="bi bi-calendar3 me-2"></i>Février 2024 - Janvier 2025</small>
+                        </div>
+                    </div>
+                    <ul class="list-unstyled ms-sm-2 border-start border-secondary-subtle ps-3 small text-secondary">
+                        <li class="mb-2"><i class="bi bi-arrow-right-short text-accent"></i>Assistance technique directe aux utilisateurs et maintenance des postes.</li>
+                        <li class="mb-2"><i class="bi bi-arrow-right-short text-accent"></i>Animation de sessions de formation en bureautique et initiation web.</li>
+                        <li><i class="bi bi-arrow-right-short text-accent"></i>Encadrement, coordination et organisation du planning de l'équipe.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-body-tertiary rounded-4 p-4 shadow-sm border border-secondary-subtle">
+                    <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center mb-3">
+                        <img src="assets/sic.jpg" alt="Sahel Infocom" class="object-fit-contain me-sm-3 mb-2 mb-sm-0" style="width: 100px; height: 50px;">
+                        <div>
+                            <h5 class="fw-bold text-accent mb-0">Stagiaire Technicien – Sécurité électronique et IT</h5>
+                            <div class="text-light small fw-semibold">Sahel Infocom, Bamako</div>
+                            <small class="text-secondary"><i class="bi bi-calendar3 me-2"></i>Juin 2022 - Août 2022</small>
+                        </div>
+                    </div>
+                    <ul class="list-unstyled ms-sm-2 border-start border-secondary-subtle ps-3 small text-secondary">
+                        <li class="mb-2"><i class="bi bi-arrow-right-short text-accent"></i>Installation, raccordement et configuration de systèmes CCTV (vidéosurveillance).</li>
+                        <li class="mb-2"><i class="bi bi-arrow-right-short text-accent"></i>Administration réseau de niveau 1 (switchs Cisco, téléphones IP).</li>
+                        <li><i class="bi bi-arrow-right-short text-accent"></i>Analyse des besoins sur le terrain et propositions de solutions.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Projets" class="container my-5 py-5">
+        <h1 class="text-uppercase fw-bold text-center mb-5">Projets & Réalisations</h1>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            
+            <div class="col">
+                <div class="card h-100 bg-body-tertiary border-0 shadow-lg rounded-4 overflow-hidden d-flex flex-column justify-content-between">
+                    <div class="card-body p-4">
+                        <span class="badge bg-dark border text-accent float-end small">Web App</span>
+                        <h2 class="card-title h5 fw-bold text-white mb-3">Easy Process</h2>
+                        <p class="card-text text-secondary small">Projet de fin d'études simplifiant la gestion des demandes administratives universitaires.</p>
+                        <div class="d-flex flex-wrap gap-1 mt-3">
+                            <span class="badge badge-accent">Node.js</span><span class="badge badge-accent">Express</span><span class="badge badge-accent">Bootstrap</span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 p-4 pt-0 d-flex gap-2">
+                        <a href="#" class="btn btn-accent flex-grow-1">Démo <i class="bi bi-link-45deg"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 bg-body-tertiary border-0 shadow-lg rounded-4 overflow-hidden d-flex flex-column justify-content-between">
+                    <div class="card-body p-4">
+                        <span class="badge bg-dark border text-accent float-end small">E-commerce</span>
+                        <h2 class="card-title h5 fw-bold text-white mb-3">Otaku Mali</h2>
+                        <p class="card-text text-secondary small">Plateforme communautaire dédiée à la culture otaku au Mali. Regroupe l'actualité des animes et mangas.</p>
+                        <div class="d-flex flex-wrap gap-1 mt-3">
+                            <span class="badge badge-accent">React</span><span class="badge badge-accent">Tailwind CSS</span><span class="badge badge-accent">MongoDB</span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 p-4 pt-0 d-flex gap-2">
+                        <a href="#" class="btn btn-accent flex-grow-1">Démo <i class="bi bi-link-45deg"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 bg-body-tertiary border-0 shadow-lg rounded-4 overflow-hidden d-flex flex-column justify-content-between">
+                    <div class="card-body p-4">
+                        <span class="badge bg-dark border text-accent float-end small">IoT & Matériel</span>
+                        <h2 class="card-title h5 fw-bold text-white mb-3">P E I (Pouvelle Écologique)</h2>
+                        <p class="card-text text-secondary small">Système domotique basé sur Arduino optimisant la collecte des déchets.</p>
+                        <div class="d-flex flex-wrap gap-1 mt-3">
+                            <span class="badge badge-accent">Arduino</span><span class="badge badge-accent">Capteurs</span><span class="badge badge-accent">C/C++</span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 p-4 pt-0 d-flex gap-2">
+                        <a href="#" class="btn btn-accent flex-grow-1">Détails <i class="bi bi-info-circle"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 bg-body-tertiary border-0 shadow-lg rounded-4 overflow-hidden d-flex flex-column justify-content-between">
+                    <div class="card-body p-4">
+                        <span class="badge bg-dark border text-accent float-end small">Logistique</span>
+                        <h2 class="card-title h5 fw-bold text-white mb-3">UniPrice</h2>
+                        <p class="card-text text-secondary small">Application web d'harmonisation tarifaire du transport de fret entre le Mali et la Mauritanie.</p>
+                        <div class="d-flex flex-wrap gap-1 mt-3">
+                            <span class="badge badge-accent">React</span><span class="badge badge-accent">Node.js</span><span class="badge badge-accent">Express</span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 p-4 pt-0 d-flex gap-2">
+                        <a href="#" class="btn btn-accent flex-grow-1">Démo <i class="bi bi-link-45deg"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 bg-body-tertiary border-0 shadow-lg rounded-4 overflow-hidden d-flex flex-column justify-content-between">
+                    <div class="card-body p-4">
+                        <span class="badge bg-dark border text-accent float-end small">Médical</span>
+                        <h2 class="card-title h5 fw-bold text-white mb-3">Gestion de Patients</h2>
+                        <p class="card-text text-secondary small">Application informatique universitaire conçue pour la centralisation et la sécurisation des données médicales.</p>
+                        <div class="d-flex flex-wrap gap-1 mt-3">
+                            <span class="badge badge-accent">JavaScript</span><span class="badge badge-accent">Base de données</span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 p-4 pt-0 d-flex gap-2">
+                        <a href="#" class="btn btn-accent flex-grow-1">Détails <i class="bi bi-info-circle"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 bg-body-tertiary border-0 shadow-lg rounded-4 overflow-hidden d-flex flex-column justify-content-between">
+                    <div class="card-body p-4">
+                        <span class="badge bg-dark border text-accent float-end small">Réseau</span>
+                        <h2 class="card-title h5 fw-bold text-white mb-3">Architectures LAN Cisco</h2>
+                        <p class="card-text text-secondary small">Simulations académiques approfondies intégrant routage, commutation et sécurité.</p>
+                        <div class="d-flex flex-wrap gap-1 mt-3">
+                            <span class="badge badge-accent">Packet Tracer</span><span class="badge badge-accent">Routage</span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 p-4 pt-0 d-flex gap-2">
+                        <a href="#" class="btn btn-accent flex-grow-1">Aperçu <i class="bi bi-eye"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-dark border-top border-secondary py-4 mt-5 text-secondary">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+            <div>
+                <p class="mb-0 text-center text-md-start">
+                   Copyright © 2026 - Cherif Souleymane Haidara - All rights reserved
+                </p>
+            </div>
+            <div class="d-flex gap-4">
+                <a href="mailto:cherif.so.h@mail.com" class="text-secondary fs-3"><i class="bi bi-envelope"></i></a>
+                <a href="https://github.com/jinxkken" target="_blank" class="text-secondary fs-3"><i class="bi bi-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function updateYggCounter() {
+            // Début au 1er Janvier 2024 à 00:00:00
+            const startDate = new Date("2024-01-01T00:00:00");
+            const now = new Date();
+            let diffTime = now - startDate;
+
+            if (diffTime < 0) return;
+
+            // Calcul précis des Écarts calendaires
+            let yearsDiff = now.getFullYear() - startDate.getFullYear();
+            let monthsDiff = now.getMonth() - startDate.getMonth();
+            let daysDiff = now.getDate() - startDate.getDate();
+
+            if (daysDiff < 0) {
+                monthsDiff--;
+                let prevMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+                daysDiff += prevMonth;
+            }
+
+            if (monthsDiff < 0) {
+                yearsDiff--;
+                monthsDiff += 12;
+            }
+
+            // Récupération Heures, Minutes, Secondes en direct
+            let displayHours = now.getHours().toString().padStart(2, '0');
+            let displayMinutes = now.getMinutes().toString().padStart(2, '0');
+            let displaySeconds = now.getSeconds().toString().padStart(2, '0');
+
+            // Injection dynamique dans les éléments HTML correspondants
+            document.getElementById("count-years").innerText = yearsDiff.toString().padStart(2, '0');
+            document.getElementById("count-months").innerText = monthsDiff.toString().padStart(2, '0');
+            document.getElementById("count-days").innerText = daysDiff.toString().padStart(2, '0');
+            document.getElementById("count-hours").innerText = displayHours;
+            document.getElementById("count-minutes").innerText = displayMinutes;
+            document.getElementById("count-seconds").innerText = displaySeconds;
+        }
+
+        // Initier et rafraîchir chaque seconde
+        updateYggCounter();
+        setInterval(updateYggCounter, 1000);
+    </script>
+</body>
+</html>
